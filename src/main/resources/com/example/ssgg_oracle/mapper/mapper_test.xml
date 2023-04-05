@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ssgg_oracle.mapper.mapper_test">
+
+
+    <select id="selectTempList" resultType="com.example.ssgg_oracle.domain.domain_test">
+        SELECT
+        '18092997284'                     AS awbno
+        ,'ICN'                            AS stn
+        ,'2021-08-17 14:23'               AS EDate
+        FROM DUAL
+    </select>
+
+
+
+    <select id="selectTADM_PORT" resultType="com.example.ssgg_oracle.domain.citem_port">
+        SELECT
+        IATA_PORT_C     AS iata_port_c
+            ,PORT_N     AS port_n
+            ,RGN_C      AS rgn_c
+        FROM TADM_PORT
+        WHERE
+             RGN_C = #{RGN_C}
+    </select>
+
+
+</mapper>

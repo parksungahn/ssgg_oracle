@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.ssgg_oracle.mapper.mapper_wld">
+
+
+    <select id="mapper_selectTest" resultType="com.example.ssgg_oracle.domain.domain_port">
+        SELECT
+        'ICN'                     AS port_c
+        ,'ICN'                    AS port_name
+        ,'INCHEON'                 AS port_desc
+        FROM DUAL
+    </select>
+
+
+
+    <select id="mapper_selectTPort" resultType="com.example.ssgg_oracle.domain.domain_port">
+        SELECT
+                port_c     AS port_c
+                ,port_name     AS port_name
+                ,port_desc      AS port_desc
+        FROM TPORT_TEST
+<!--        WHERE-->
+<!--            port_c = #{port_c}-->
+    </select>
+
+    <select id="mapper_selectCarr" resultType="com.example.ssgg_oracle.domain.domain_carr">
+        SELECT
+            CARR_C     AS CARR_C
+            ,DESC_E      AS DESC_E
+        FROM TADM_CARR
+        WHERE
+              CARR_C = #{carr_c}
+    </select>
+
+    <insert id="mapper_SavePort" parameterType="com.example.ssgg_oracle.domain.domain_port">
+        INSERT INTO TPORT_TEST(port_c, port_name, port_desc) values(#{port_c}, #{port_name},  #{port_desc})
+    </insert>
+
+
+    <update id="mapper_UpdatePort" parameterType="com.example.ssgg_oracle.domain.domain_port">
+        UPDATE TPORT_TEST SET port_name=#{port_name},  port_desc=#{port_desc} WHERE port_c= #{port_c}
+    </update>
+
+    <delete id="mapper_DeletePort" parameterType="com.example.ssgg_oracle.domain.domain_port">
+        DELETE FROM TPORT_TEST
+        <!--        WHERE-->
+        <!--        port_c = #{port_c}-->
+    </delete>
+
+
+</mapper>

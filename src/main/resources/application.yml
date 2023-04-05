@@ -1,0 +1,109 @@
+spring:
+  profiles:
+    active: mysql
+
+---
+
+spring:
+  profiles: oracle
+  datasource:
+    url: jdbc:oracle:thin:@(DESCRIPTION=(FAILOVER=ON)(CONNECT_TIMEOUT=5)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=devdb1.abc.com)(PORT=2023))(ADDRESS=(PROTOCOL=TCP)(HOST=devdb1.abc.com)(PORT=2023)))(CONNECT_DATA=(SERVICE_NAME=DEVAPPL)))
+    username: testuser
+    password: testpassword
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: SpringBootJPAHikariCP
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/**/*.xml
+
+idp:
+  metadata-trust: false
+  metadata-require-signature: false
+  metadata-url: /metadata/GoogleIDPMetadata-koreanair.com.xml
+
+
+#errorRedirectUrl: redirect:https://ssoint.koreanair.com/login/common/ssologout.jsp?end_url=http://localhost:8080
+applicationMaxInactiveIntervalSec: 7200
+bcApiServiceUrl: http://localhost:8080/webservices
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600
+  tomcat:
+    additional-tld-skip-patterns: xercesImpl.jar,xml-apis.jar,serializer.jar,xml-apis.jar
+
+servicekey: EAAg7L5RCxJanvcFmemCvEHHGQaaa
+
+
+
+
+
+
+
+
+---
+
+spring:
+  profiles: mysql
+  datasource:
+    url: jdbc:mysql://db.abc.net:3306/dbincrediblesoft?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
+    username: testuser
+    password: testpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      poolName: SpringBootJPAHikariCP
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/**/*.xml
+
+idp:
+  metadata-trust: false
+  metadata-require-signature: false
+  metadata-url: /metadata/GoogleIDPMetadata-koreanair.com.xml
+
+
+#errorRedirectUrl: redirect:https://ssoint.koreanair.com/login/common/ssologout.jsp?end_url=http://localhost:8080
+applicationMaxInactiveIntervalSec: 7200
+bcApiServiceUrl: http://localhost:8080/webservices
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 3600
+  tomcat:
+    additional-tld-skip-patterns: xercesImpl.jar,xml-apis.jar,serializer.jar,xml-apis.jar
+
+servicekey: EAAg7L5RCxJanvcFmemCvEHHGQaaa
+
